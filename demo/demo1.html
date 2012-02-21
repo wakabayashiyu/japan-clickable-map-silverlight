@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Japan Clickable Map Silverlight</title>
+<script type="text/javascript">
+function onSilverlightError(sender, args) {
+    var appSource = "";
+    if (sender != null && sender != 0) {
+      appSource = sender.getHost().Source;
+    }
+    
+    var errorType = args.ErrorType;
+    var iErrorCode = args.ErrorCode;
+
+    if (errorType == "ImageError" || errorType == "MediaError") {
+      return;
+    }
+
+    var errMsg = "Silverlight アプリケーションでハンドルされていないエラーが発生しました: " +  appSource + "\n" ;
+
+    errMsg += "コード: "+ iErrorCode + "    \n";
+    errMsg += "カテゴリ: " + errorType + "       \n";
+    errMsg += "メッセージ: " + args.ErrorMessage + "     \n";
+
+    if (errorType == "ParserError") {
+        errMsg += "ファイル: " + args.xamlFile + "     \n";
+        errMsg += "行: " + args.lineNumber + "     \n";
+        errMsg += "位置: " + args.charPosition + "     \n";
+    }
+    else if (errorType == "RuntimeError") {           
+        if (args.lineNumber != 0) {
+            errMsg += "行: " + args.lineNumber + "     \n";
+            errMsg += "位置: " +  args.charPosition + "     \n";
+        }
+        errMsg += "メソッド名: " + args.methodName + "     \n";
+    }
+
+    throw new Error(errMsg);
+}
+</script>
+</head>
+<body>
+<div id="silverlightControlHost" style="height: 500px">
+    <object data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="100%" height="100%">
+        <param name="source" value="JapanClickableMap.xap"/>
+        <param name="background" value="transparent"/>
+        <param name="windowless" value="true"/>
+        <param name="minRuntimeVersion" value="4.0.50826.0"/>
+        <param name="autoUpgrade" value="true"/>
+        <param name="initParams" value="
+        hokkaido_tooltip=Hokkaido,
+        aomori_tooltip=Aomori,
+        iwate_tooltip=Iwate,
+        miyagi_tooltip=Miyagi,
+        akita_tooltip=Akita,
+        yamagata_tooltip=Yamagata,
+        fukushima_tooltip=Fukushima,
+        ibaraki_tooltip=Ibaraki,
+        tochigi_tooltip=Tochigi,
+        gunma_tooltip=Gunma,
+        saitama_tooltip=Saitama,
+        chiba_tooltip=Chiba,
+        tokyo_tooltip=Tokyo,
+        kanagawa_tooltip=Kanagawa,
+        niigata_tooltip=Niigata,
+        toyama_tooltip=Toyama,
+        ishikawa_tooltip=Ishikawa,
+        fukui_tooltip=Fukui,
+        yamanashi_tooltip=Yamanashi,
+        nagano_tooltip=Nagano,
+        gifu_tooltip=Gifu,
+        shizuoka_tooltip=Shizuoka,
+        aichi_tooltip=Aichi,
+        mie_tooltip=Mie,
+        shiga_tooltip=Shiga,
+        kyoto_tooltip=Kyoto,
+        osaka_tooltip=Osaka,
+        hyogo_tooltip=Hyogo,
+        nara_tooltip=Nara,
+        wakayama_tooltip=Wakayama,
+        tottori_tooltip=Tottori,
+        shimane_tooltip=Shimane,
+        okayama_tooltip=Okayama,
+        hiroshima_tooltip=Hiroshima,
+        yamaguchi_tooltip=Yamaguchi,
+        tokushima_tooltip=Tokushima,
+        kagawa_tooltip=Kagawa,
+        ehime_tooltip=Ehime,
+        kochi_tooltip=Kochi,
+        fukuoka_tooltip=Fukuoka,
+        saga_tooltip=Saga,
+        nagasaki_tooltip=Nagasaki,
+        kumamoto_tooltip=Kumamoto,
+        oita_tooltip=Oita,
+        miyazaki_tooltip=Miyazaki,
+        kagoshima_tooltip=Kagoshima,
+        okinawa_tooltip=Okinawa,
+        hokkaido_url=http://www.project0884.com/,
+        aomori_url=http://www.project0884.com/,
+        iwate_url=http://www.project0884.com/,
+        miyagi_url=http://www.project0884.com/,
+        akita_url=http://www.project0884.com/,
+        yamagata_url=http://www.project0884.com/,
+        fukushima_url=http://www.project0884.com/,
+        ibaraki_url=http://www.project0884.com/,
+        tochigi_url=http://www.project0884.com/,
+        gunma_url=http://www.project0884.com/,
+        saitama_url=http://www.project0884.com/,
+        chiba_url=http://www.project0884.com/,
+        tokyo_url=http://www.project0884.com/,
+        kanagawa_url=http://www.project0884.com/,
+        niigata_url=http://www.project0884.com/,
+        toyama_url=http://www.project0884.com/,
+        ishikawa_url=http://www.project0884.com/,
+        fukui_url=http://www.project0884.com/,
+        yamanashi_url=http://www.project0884.com/,
+        nagano_url=http://www.project0884.com/,
+        gifu_url=http://www.project0884.com/,
+        shizuoka_url=http://www.project0884.com/,
+        aichi_url=http://www.project0884.com/,
+        mie_url=http://www.project0884.com/,
+        shiga_url=http://www.project0884.com/,
+        kyoto_url=http://www.project0884.com/,
+        osaka_url=http://www.project0884.com/,
+        hyogo_url=http://www.project0884.com/,
+        nara_url=http://www.project0884.com/,
+        wakayama_url=http://www.project0884.com/,
+        tottori_url=http://www.project0884.com/,
+        shimane_url=http://www.project0884.com/,
+        okayama_url=http://www.project0884.com/,
+        hiroshima_url=http://www.project0884.com/,
+        yamaguchi_url=http://www.project0884.com/,
+        tokushima_url=http://www.project0884.com/,
+        kagawa_url=http://www.project0884.com/,
+        ehime_url=http://www.project0884.com/,
+        kochi_url=http://www.project0884.com/,
+        fukuoka_url=http://www.project0884.com/,
+        saga_url=http://www.project0884.com/,
+        nagasaki_url=http://www.project0884.com/,
+        kumamoto_url=http://www.project0884.com/,
+        oita_url=http://www.project0884.com/,
+        miyazaki_url=http://www.project0884.com/,
+        kagoshima_url=http://www.project0884.com/,
+        okinawa_url=http://www.project0884.com/,
+        target=_blank"/>
+        <a href="http://go.microsoft.com/fwlink/?LinkID=149156&v=4.0.50826.0" style="text-decoration:none">
+        <img src="http://go.microsoft.com/fwlink/?LinkId=108181" alt="Get Microsoft Silverlight" style="border-style:none"/>
+        </a>
+    </object><iframe id="_sl_historyFrame" style="visibility:hidden;height:0px;width:0px;border:0px"></iframe>
+</div>
+</body>
+</html>
